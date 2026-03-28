@@ -793,6 +793,23 @@ body {
     .shape--3 { width: 120px; height: 120px; }
     .shape--4 { width: 80px; height: 80px; }
     .shape--5 { width: 100px; height: 100px; }
+
+    .login-wrapper {
+        padding-top: 1rem;
+    }
+
+    .login-card {
+        margin-top: 0;
+    }
+
+    .login-card__header {
+        margin-bottom: 1.5rem;
+    }
+
+    .login-card__footer {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+    }
 }
 
 @media (min-width: 1440px) {
