@@ -1,0 +1,696 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary: #ec4899;
+    --accent: #06b6d4;
+    --bg-dark: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.8);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: rgba(148, 163, 184, 0.2);
+    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.login-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.login-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    z-index: 0;
+    animation: bgPulse 8s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.scene {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    perspective: 600px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: cubeRotate 20s linear infinite;
+}
+
+@keyframes cubeRotate {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+.cube__face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+    backdrop-filter: blur(2px);
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -75px;
+}
+
+.cube__face--front { transform: translateZ(75px); }
+.cube__face--back { transform: rotateY(180deg) translateZ(75px); }
+.cube__face--right { transform: rotateY(90deg) translateZ(75px); }
+.cube__face--left { transform: rotateY(-90deg) translateZ(75px); }
+.cube__face--top { transform: rotateX(90deg) translateZ(75px); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+.shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    animation: floatShape 15s ease-in-out infinite;
+}
+
+.shape--1 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.shape--2 {
+    width: 200px;
+    height: 200px;
+    background: var(--secondary);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -3s;
+}
+
+.shape--3 {
+    width: 250px;
+    height: 250px;
+    background: var(--accent);
+    bottom: 10%;
+    left: 20%;
+    animation-delay: -6s;
+}
+
+.shape--4 {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    top: 20%;
+    right: 10%;
+    animation-delay: -9s;
+}
+
+.shape--5 {
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    top: 50%;
+    right: 20%;
+    animation-delay: -12s;
+}
+
+@keyframes floatShape {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -30px) scale(1.1); }
+    50% { transform: translate(-20px, 20px) scale(0.9); }
+    75% { transform: translate(20px, 10px) scale(1.05); }
+}
+
+.card-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 420px;
+    perspective: 2000px;
+}
+
+.login-card {
+    position: relative;
+    width: 100%;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    z-index: 100;
+    pointer-events: none;
+}
+
+.card-flipper {
+    position: relative;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-card.is-flipped .card-flipper {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: relative;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 2.5rem;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.card-face::-webkit-scrollbar {
+    display: none;
+}
+
+.card-face::-webkit-scrollbar {
+    width: 6px;
+}
+
+.card-face::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.card-face::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.card-face::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+.card-face--signup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: rotateY(180deg);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.login-card.is-flipped .card-face--signup {
+    visibility: visible;
+    opacity: 1;
+}
+
+.login-card:not(.is-flipped) .card-face--signin {
+    visibility: visible;
+    opacity: 1;
+}
+
+.login-card:not(.is-flipped) .card-face--signup {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.login-card.is-flipped .card-face--signin {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.login-card__header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-card__logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.login-card__logo svg {
+    width: 32px;
+    height: 32px;
+}
+
+.login-card__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-card__subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.form-group:focus-within .form-label {
+    color: var(--primary-light);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.form-group:focus-within .input-icon {
+    color: var(--primary);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--primary-light);
+}
+
+.toggle-password svg {
+    width: 18px;
+    height: 18px;
+}
+
+.toggle-password .hidden {
+    display: none;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.checkbox-custom::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+    transform: scale(0);
+    transition: var(--transition);
+}
+
+.checkbox-input:checked + .checkbox-custom {
+    border-color: var(--primary);
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+    transform: scale(1);
+}
+
+.checkbox-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.terms-link {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+
+.forgot-link {
+    font-size: 0.875rem;
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.forgot-link:hover {
+    color: var(--primary);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn--signup {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+}
+
+.submit-btn--signup:hover {
+    box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
+}
+
+.submit-btn__icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.submit-btn:hover .submit-btn__icon {
+    transform: translateX(5px);
+}
+
+.submit-btn__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.login-card__footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.switch-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.switch-btn {
+    background: none;
+    border: none;
+    color: var(--primary-light);
+    font-weight: 600;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.switch-btn:hover {
+    color: var(--primary);
+}
+
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+}
+
+.progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.progress-dot.active {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    transform: scale(1.2);
+}
+
+.progress-dot:hover {
+    background: var(--primary-light);
+}
+
+@media (max-width: 480px) {
+    .card-face {
+        padding: 1.75rem;
+    }
+
+    .progress-indicator {
+        padding: 1rem 1.75rem;
+    }
+
+    .login-card__title {
+        font-size: 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .scene {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube__face {
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+
+    .cube__face--front { transform: translateZ(50px); }
+    .cube__face--back { transform: rotateY(180deg) translateZ(50px); }
+    .cube__face--right { transform: rotateY(90deg) translateZ(50px); }
+    .cube__face--left { transform: rotateY(-90deg) translateZ(50px); }
+    .cube__face--top { transform: rotateX(90deg) translateZ(50px); }
+    .cube__face--bottom { transform: rotateX(-90deg) translateZ(50px); }
+}
+
+@media (min-width: 1440px) {
+    .card-face {
+        padding: 3rem;
+    }
+
+    .login-card__title {
+        font-size: 2rem;
+    }
+
+    .scene {
+        width: 400px;
+        height: 400px;
+    }
+
+    .cube__face {
+        width: 200px;
+        height: 200px;
+        margin-top: -100px;
+        margin-left: -100px;
+    }
+
+    .cube__face--front { transform: translateZ(100px); }
+    .cube__face--back { transform: rotateY(180deg) translateZ(100px); }
+    .cube__face--right { transform: rotateY(90deg) translateZ(100px); }
+    .cube__face--left { transform: rotateY(-90deg) translateZ(100px); }
+    .cube__face--top { transform: rotateX(90deg) translateZ(100px); }
+    .cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-dark: #f8fafc;
+        --bg-card: rgba(255, 255, 255, 0.9);
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --text-muted: #94a3b8;
+        --border: rgba(0, 0, 0, 0.1);
+    }
+}

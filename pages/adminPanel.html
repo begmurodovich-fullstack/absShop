@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="absShop Admin Panel">
+    <title>Admin Panel | absShop</title>
+    <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container navbar__inner">
+                <a href="index.html" class="logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span>absShop</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Asosiy</a></li>
+                    <li><a href="products.html" class="nav-link">Mahsulotlar</a></li>
+                    <li><a href="favorites.html" class="nav-link">Sevimlilar</a></li>
+                    <li><a href="cart.html" class="nav-link">Savat</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="theme-toggle" aria-label="Tema">
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="https://picsum.photos/40/40?random=100" alt="Admin" class="admin-profile__avatar">
+                        <span class="admin-profile__name">Admin</span>
+                    </div>
+                    <button class="mobile-menu-btn" aria-label="Menyu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin">
+        <div class="container">
+            <aside class="admin-sidebar">
+                <nav class="admin-nav">
+                    <a href="#dashboard" class="admin-nav__item active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        Dashboard
+                    </a>
+                    <a href="#orders" class="admin-nav__item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                        Buyurtmalar
+                    </a>
+                    <a href="#products" class="admin-nav__item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        </svg>
+                        Mahsulotlar
+                    </a>
+                    <a href="#users" class="admin-nav__item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        Mijozlar
+                    </a>
+                    <a href="#categories" class="admin-nav__item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="4" y1="21" x2="4" y2="14"/>
+                            <line x1="4" y1="10" x2="4" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12" y2="3"/>
+                            <line x1="20" y1="21" x2="20" y2="16"/>
+                            <line x1="20" y1="12" x2="20" y2="3"/>
+                            <line x1="1" y1="14" x2="7" y2="14"/>
+                            <line x1="9" y1="8" x2="15" y2="8"/>
+                            <line x1="17" y1="16" x2="23" y2="16"/>
+                        </svg>
+                        Kategoriyalar
+                    </a>
+                    <a href="#reviews" class="admin-nav__item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        Sharhlar
+                    </a>
+                    <a href="#settings" class="admin-nav__item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                        Sozlamalar
+                    </a>
+                </nav>
+            </aside>
+
+            <div class="admin-content">
+                <div class="admin-header">
+                    <div class="admin-header__left">
+                        <h1 class="admin-header__title">Dashboard</h1>
+                        <p class="admin-header__subtitle">Xush kelibsiz, Admin!</p>
+                    </div>
+                    <div class="admin-header__right">
+                        <div class="admin-search">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            <input type="text" placeholder="Qidiruv..." class="admin-search__input">
+                        </div>
+                        <button class="admin-notification">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                            </svg>
+                            <span class="admin-notification__badge">3</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="admin-stats">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon admin-stat-card__icon--primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                                <line x1="3" y1="6" x2="21" y2="6"/>
+                                <path d="M16 10a4 4 0 0 1-8 0"/>
+                            </svg>
+                        </div>
+                        <div class="admin-stat-card__content">
+                            <span class="admin-stat-card__number">1,234</span>
+                            <span class="admin-stat-card__label">Jami Buyurtmalar</span>
+                            <span class="admin-stat-card__change admin-stat-card__change--up">+12%</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon admin-stat-card__icon--success">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <div class="admin-stat-card__content">
+                            <span class="admin-stat-card__number">45.2M</span>
+                            <span class="admin-stat-card__label">Jami Daromad</span>
+                            <span class="admin-stat-card__change admin-stat-card__change--up">+8.5%</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon admin-stat-card__icon--warning">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div class="admin-stat-card__content">
+                            <span class="admin-stat-card__number">5,678</span>
+                            <span class="admin-stat-card__label">Mijozlar</span>
+                            <span class="admin-stat-card__change admin-stat-card__change--up">+5.2%</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-card__icon admin-stat-card__icon--danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            </svg>
+                        </div>
+                        <div class="admin-stat-card__content">
+                            <span class="admin-stat-card__number">890</span>
+                            <span class="admin-stat-card__label">Mahsulotlar</span>
+                            <span class="admin-stat-card__change admin-stat-card__change--down">-2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-grid">
+                    <div class="admin-card admin-card--orders">
+                        <div class="admin-card__header">
+                            <h3 class="admin-card__title">So'nggi Buyurtmalar</h3>
+                            <a href="#" class="admin-card__link">Barchasini ko'rish</a>
+                        </div>
+                        <div class="admin-table-wrapper">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Mijoz</th>
+                                        <th>Mahsulot</th>
+                                        <th>Narxi</th>
+                                        <th>Holati</th>
+                                        <th>Amallar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#1001</td>
+                                        <td>
+                                            <div class="admin-user">
+                                                <img src="https://picsum.photos/32/32?random=1" alt="" class="admin-user__avatar">
+                                                <span>Ali Valiyev</span>
+                                            </div>
+                                        </td>
+                                        <td>Smartfon Pro Max</td>
+                                        <td>2,999,000 so'm</td>
+                                        <td><span class="admin-status admin-status--pending">Kutilmoqda</span></td>
+                                        <td>
+                                            <div class="admin-actions">
+                                                <button class="admin-action" title="Ko'rish">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                        <circle cx="12" cy="12" r="3"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action" title="Tahrirlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action admin-action--danger" title="Olib tashlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <polyline points="3 6 5 6 21 6"/>
+                                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1002</td>
+                                        <td>
+                                            <div class="admin-user">
+                                                <img src="https://picsum.photos/32/32?random=2" alt="" class="admin-user__avatar">
+                                                <span>Salim Rahimov</span>
+                                            </div>
+                                        </td>
+                                        <td>Premium Kurtka</td>
+                                        <td>459,000 so'm</td>
+                                        <td><span class="admin-status admin-status--completed">Tugallangan</span></td>
+                                        <td>
+                                            <div class="admin-actions">
+                                                <button class="admin-action" title="Ko'rish">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                        <circle cx="12" cy="12" r="3"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action" title="Tahrirlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action admin-action--danger" title="Olib tashlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <polyline points="3 6 5 6 21 6"/>
+                                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1003</td>
+                                        <td>
+                                            <div class="admin-user">
+                                                <img src="https://picsum.photos/32/32?random=3" alt="" class="admin-user__avatar">
+                                                <span>Guli Nazarova</span>
+                                            </div>
+                                        </td>
+                                        <td>LED Lampa</td>
+                                        <td>89,000 so'm</td>
+                                        <td><span class="admin-status admin-status--shipping">Yetkazilmoqda</span></td>
+                                        <td>
+                                            <div class="admin-actions">
+                                                <button class="admin-action" title="Ko'rish">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                        <circle cx="12" cy="12" r="3"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action" title="Tahrirlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action admin-action--danger" title="Olib tashlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <polyline points="3 6 5 6 21 6"/>
+                                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1004</td>
+                                        <td>
+                                            <div class="admin-user">
+                                                <img src="https://picsum.photos/32/32?random=4" alt="" class="admin-user__avatar">
+                                                <span>Bobur Aliyev</span>
+                                            </div>
+                                        </td>
+                                        <td>Noutbuk Ultra</td>
+                                        <td>12,999,000 so'm</td>
+                                        <td><span class="admin-status admin-status--pending">Kutilmoqda</span></td>
+                                        <td>
+                                            <div class="admin-actions">
+                                                <button class="admin-action" title="Ko'rish">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                        <circle cx="12" cy="12" r="3"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action" title="Tahrirlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="admin-action admin-action--danger" title="Olib tashlash">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <polyline points="3 6 5 6 21 6"/>
+                                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="admin-card admin-card--chart">
+                        <div class="admin-card__header">
+                            <h3 class="admin-card__title">Oylik Sotuvlar</h3>
+                            <select class="admin-select">
+                                <option>2024</option>
+                                <option>2023</option>
+                            </select>
+                        </div>
+                        <div class="chart">
+                            <div class="chart-bars">
+                                <div class="chart-bar" style="--height: 60%;">
+                                    <span class="chart-bar__value">12M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 80%;">
+                                    <span class="chart-bar__value">16M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 45%;">
+                                    <span class="chart-bar__value">9M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 90%;">
+                                    <span class="chart-bar__value">18M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 70%;">
+                                    <span class="chart-bar__value">14M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 55%;">
+                                    <span class="chart-bar__value">11M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 85%;">
+                                    <span class="chart-bar__value">17M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 75%;">
+                                    <span class="chart-bar__value">15M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 65%;">
+                                    <span class="chart-bar__value">13M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 95%;">
+                                    <span class="chart-bar__value">19M</span>
+                                </div>
+                                <div class="chart-bar" style="--height: 88%;">
+                                    <span class="chart-bar__value">17.5M</span>
+                                </div>
+                                <div class="chart-bar chart-bar--highlight" style="--height: 100%;">
+                                    <span class="chart-bar__value">20M</span>
+                                </div>
+                            </div>
+                            <div class="chart-labels">
+                                <span>Yan</span>
+                                <span>Fev</span>
+                                <span>Mar</span>
+                                <span>Apr</span>
+                                <span>May</span>
+                                <span>Iyun</span>
+                                <span>Iyul</span>
+                                <span>Avg</span>
+                                <span>Sen</span>
+                                <span>Okt</span>
+                                <span>Noa</span>
+                                <span>Dek</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card admin-card--products">
+                        <div class="admin-card__header">
+                            <h3 class="admin-card__title">Eng Ko'p Sotilgan</h3>
+                            <a href="#" class="admin-card__link">Barchasini ko'rish</a>
+                        </div>
+                        <div class="top-products">
+                            <div class="top-product">
+                                <img src="https://picsum.photos/60/60?random=10" alt="" class="top-product__image">
+                                <div class="top-product__info">
+                                    <span class="top-product__name">Smartfon Pro Max</span>
+                                    <span class="top-product__sales">256 ta sotildi</span>
+                                </div>
+                                <span class="top-product__revenue">768M so'm</span>
+                            </div>
+                            <div class="top-product">
+                                <img src="https://picsum.photos/60/60?random=11" alt="" class="top-product__image">
+                                <div class="top-product__info">
+                                    <span class="top-product__name">Noutbuk Ultra</span>
+                                    <span class="top-product__sales">189 ta sotildi</span>
+                                </div>
+                                <span class="top-product__revenue">2.4B so'm</span>
+                            </div>
+                            <div class="top-product">
+                                <img src="https://picsum.photos/60/60?random=12" alt="" class="top-product__image">
+                                <div class="top-product__info">
+                                    <span class="top-product__name">Premium Kurtka</span>
+                                    <span class="top-product__sales">156 ta sotildi</span>
+                                </div>
+                                <span class="top-product__revenue">71.6M so'm</span>
+                            </div>
+                            <div class="top-product">
+                                <img src="https://picsum.photos/60/60?random=13" alt="" class="top-product__image">
+                                <div class="top-product__info">
+                                    <span class="top-product__name">LED Lampa</span>
+                                    <span class="top-product__sales">98 ta sotildi</span>
+                                </div>
+                                <span class="top-product__revenue">8.7M so'm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card admin-card--add-product">
+                        <div class="admin-card__header">
+                            <h3 class="admin-card__title">Yangi Mahsulot Qo'shish</h3>
+                        </div>
+                        <form class="admin-form">
+                            <div class="admin-form__group">
+                                <label class="admin-form__label">Mahsulot nomi</label>
+                                <input type="text" class="admin-form__input" placeholder="Nomini kiriting">
+                            </div>
+                            <div class="admin-form__group">
+                                <label class="admin-form__label">Kategoriya</label>
+                                <select class="admin-form__select">
+                                    <option value="">Tanlang...</option>
+                                    <option value="electronics">Elektronika</option>
+                                    <option value="clothing">Kiyim-kechak</option>
+                                    <option value="accessories">Aksessuarlar</option>
+                                    <option value="home">Uy-ro'zg'or</option>
+                                </select>
+                            </div>
+                            <div class="admin-form__row">
+                                <div class="admin-form__group">
+                                    <label class="admin-form__label">Narxi (so'm)</label>
+                                    <input type="number" class="admin-form__input" placeholder="0">
+                                </div>
+                                <div class="admin-form__group">
+                                    <label class="admin-form__label">Soni</label>
+                                    <input type="number" class="admin-form__input" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="admin-form__group">
+                                <label class="admin-form__label">Tavsif</label>
+                                <textarea class="admin-form__textarea" rows="3" placeholder="Mahsulot haqida"></textarea>
+                            </div>
+                            <div class="admin-form__group">
+                                <label class="admin-form__label">Rasm</label>
+                                <div class="admin-form__file-upload">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="17 8 12 3 7 8"/>
+                                        <line x1="12" y1="3" x2="12" y2="15"/>
+                                    </svg>
+                                    <span>Rasm tanlang yoki bu yerga tashlang</span>
+                                    <input type="file" class="admin-form__file-input">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--block">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Mahsulot Qo'shish
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
